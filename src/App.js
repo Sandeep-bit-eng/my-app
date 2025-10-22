@@ -8,9 +8,10 @@ import Footer from "./pages/Footer";
 import { useState, useEffect } from "react";
 import { GoogleAuthProvider } from "firebase/auth";
 import { signInWithPopup } from "firebase/auth";
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword,signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { app } from "./firebase";
 import { BrowserRouter } from "react-router-dom";
+import DataStore from "./pages/DataStore";
 // import './pages/SignUp.css'
 
 // const NotFound = (props) => <NotFoundPage {...props} />;
@@ -30,7 +31,6 @@ function App() {
         console.log("user not login");
         setuserlogin(null);
       }
-
     })
 
   }, [])
@@ -53,12 +53,10 @@ function App() {
 
   return (
     <>
-    
-        <div>
-        <h1>Hello User Login {userlogin.email}</h1>
-        <button onClick={() => { signOut(auth) }}>LogOut</button>
-        </div>
-
+      <DataStore
+        userlogin={userlogin}
+        onClick={() => { signOut(auth) }}
+      />
     </>
   );
 }

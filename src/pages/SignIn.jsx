@@ -30,9 +30,6 @@ const SignIn = () => {
             });
     };
 
-  
-    
-
 
     const handleGoogleSignIn = () => {  
         signInWithPopup(auth, GoogleProvider)
